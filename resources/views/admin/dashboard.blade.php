@@ -332,3 +332,12 @@
 </div>
 <!-- /.container-fluid -->
  @endsection
+
+@section('script')
+<!-- Page level plugins -->
+<script src="{{ asset('template-admin/vendor/chart.js/Chart.min.js') }}"></script>
+
+<!-- Page level custom scripts -->
+<script src="{{ asset('template-admin/js/demo/chart-area-demo.js') }}"></script>
+<script src="{{ asset('template-admin/js/demo/chart-pie-demo.js') }}"></script>
+@endsection
