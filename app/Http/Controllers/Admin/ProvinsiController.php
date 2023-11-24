@@ -13,9 +13,11 @@ class ProvinsiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.provinsi.index');
+        $q = $request->input('q');
+        $provinsis = Provinsi::where('nama', 'LIKE', '%' . $q . '%')->paginate(5);
+        return view('admin.provinsi.index', compact('provinsis'));
     }
 
     /**
@@ -25,7 +27,9 @@ class ProvinsiController extends Controller
      */
     public function create()
     {
-        //
+        $provinsis = new Provinsi;
+
+        return view('admin.provinsi.index', compact('provinsis'));
     }
 
     /**
@@ -36,7 +40,16 @@ class ProvinsiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+        ]);
+
+        $provinsis = new Provinsi;
+        $provinsis->nama = $request->input('nama');
+        $provinsis->save();
+
+        return redirect()->route('provinsi')
+            ->with('success', 'Provinsi created successfully.');
     }
 
     /**
@@ -45,7 +58,7 @@ class ProvinsiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
     }
@@ -56,9 +69,14 @@ class ProvinsiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $provinsis = new Provinsi;
+        $provinsis->nama = $request->input('nama');
+        $provinsis->save();
+
+        return redirect()->route('provinsi')
+            ->with('success', 'Provinsi created successfully.');
     }
 
     /**
@@ -68,10 +86,19 @@ class ProvinsiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+        ]);
+
+        $provinsis = Provinsi::find($id);
+        $provinsis->update($request->all());
+
+        return redirect()->route('provinsi')->with('success', 'Provinsi updated successfully');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -81,6 +108,8 @@ class ProvinsiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $provinsis = Provinsi::find($id);
+        $provinsis->delete();
+        return redirect()->route('provinsi')->with('success', 'Provinsi deleted successfully');
     }
 }
