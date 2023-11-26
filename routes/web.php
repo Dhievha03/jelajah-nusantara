@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProvinsiController;
+use App\Http\Controllers\Admin\WisataController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,5 +32,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::group(['middleware' => ['auth:admin']], function() {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+        Route::group(['prefix' => 'wisata', 'as' => 'wisata.'], function () {
+            Route::get('/', [WisataController::class, 'index'])->name('index');
+            Route::get('/create', [WisataController::class, 'create'])->name('create');
+            Route::post('/create', [WisataController::class, 'store'])->name('store');
+            Route::get('/edit/{wisata}', [WisataController::class, 'edit'])->name('edit');
+            Route::put('/{wisata}', [WisataController::class, 'update'])->name('update');
+            Route::get('/detail/{wisata}/{slug}', [WisataController::class, 'show'])->name('show');
+            Route::delete('/{wisata}', [WisataController::class, 'destroy'])->name('delete');
+            Route::get('/get-wisatas', [WisataController::class, 'getWisatas'])->name('getWisatas');
+        });
     });
 });

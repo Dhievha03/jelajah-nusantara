@@ -136,29 +136,10 @@
       <!-- Pie Chart -->
       <div class="col-xl-4 col-lg-5">
           <div class="card shadow mb-4">
-              <!-- Card Header - Dropdown -->
-              <div
-                  class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                  <div class="dropdown no-arrow">
-                      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                          aria-labelledby="dropdownMenuLink">
-                          <div class="dropdown-header">Dropdown Header:</div>
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                  </div>
-              </div>
               <!-- Card Body -->
               <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2">
-                      <canvas id="myPieChart"></canvas>
+                  <div class="pt-4 pb-2" style="overflow: hidden">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247.69163276790385!2d106.84290003413756!3d-6.6387108688467995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c9b75ef63af9%3A0xc7dc9b24de390490!2sMT.ABWABUL%20KHOIR!5e0!3m2!1sid!2sid!4v1700763000752!5m2!1sid!2sid" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                   </div>
                   <div class="mt-4 text-center small">
                       <span class="mr-2">

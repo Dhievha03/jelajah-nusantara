@@ -19,6 +19,12 @@
           <span>Dashboard</span></a>
   </li>
 
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('admin.wisata.index') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Wisata</span></a>
+  </li>
+
   <!-- Divider -->
   <hr class="sidebar-divider">
 
