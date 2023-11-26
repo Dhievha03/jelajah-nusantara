@@ -22,7 +22,7 @@
               <p>{{ $wisata->user->name }} | {{ $wisata->created_at->diffForHumans() }} </p>
               <hr>
               <div class="d-flex justify-content-center mb-2">
-                <img src="{{ asset('storage/wisata/' . $wisata->foto) }}" alt="" srcset="" style="height: 400px; width: auto">
+                <img src="{{ asset('storage/wisata/' . $wisata->foto) }}" alt="" srcset="" style="height: 400px; width: auto; max-width: 100%;">
               </div>
               <div class="mt-4">
                 {!! $wisata->deskripsi !!}
