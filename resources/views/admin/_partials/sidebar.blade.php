@@ -19,7 +19,7 @@
             <span>Dashboard</span></a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link" href="{{ route('provinsi') }}">
+        <a class="nav-link" href="{{ route('admin.provinsi.index') }}">
             <i class="fas fa-fw fa fa-map"></i>
             <span>Provinsi</span></a>
     </li>
@@ -30,8 +30,6 @@
             <span>Wisata</span></a>
     </li>
 
-  <!-- Divider -->
-  <hr class="sidebar-divider">
     <!-- Divider -->
     <hr class="sidebar-divider">
 

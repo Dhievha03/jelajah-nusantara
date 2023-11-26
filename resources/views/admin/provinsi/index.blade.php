@@ -13,14 +13,30 @@
         <div class="row">
             <div class="col">
                 <div class="card p-4 mb-4">
+                    @if (session()->has('success'))
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        {{ session()->get('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+                    @if (session()->has('error'))
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        {{ session()->get('error') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
                     <!-- Formulir Create -->
-                    <form action="/store" method="POST">
+                    <form action="{{ route('admin.provinsi.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="nama">Create Provinsi:</label>
-                            <input type="text" class="form-control" name="nama" required>
+                            <label for="nama">Buat Provinsi:</label>
+                            <input type="text" class="form-control" name="nama" required placeholder="Nama provinsi">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
                 </div>
             </div>
@@ -44,7 +60,7 @@
                                     <td>
                                         <div class="btn-group">
                                             @if (isset($provinsi))
-                                                <form action="{{ route('update', $provinsi->id) }}" method="POST">
+                                                <form action="{{ route('admin.provinsi.update', $provinsi->id) }}" method="POST">
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="form-group">
@@ -61,7 +77,7 @@
                                                     </div>
                                                 </form>
                                             @endif
-                                            <form action="{{ route('destroy', $provinsi->id) }}" method="POST"
+                                            <form action="{{ route('admin.provinsi.delete', $provinsi->id) }}" method="POST"
                                                 style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')

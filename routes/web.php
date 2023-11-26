@@ -22,8 +22,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/provinsi', [ProvinsiController::class, 'index']);
-
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     // Auth
     Route::get('/login', [AuthController::class, 'index'])->middleware('guest')->name('login');
@@ -32,6 +30,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::group(['middleware' => ['auth:admin']], function() {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+        Route::group(['prefix' => 'provinsi', 'as' => 'provinsi.'], function () {
+            Route::get('/', [ProvinsiController::class, 'index'])->name('index');
+            Route::post('/store', [ProvinsiController::class, 'store'])->name('store');
+            Route::put('/update/{id}', [ProvinsiController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id}', [ProvinsiController::class, 'destroy'])->name('delete');
+        });
 
         Route::group(['prefix' => 'wisata', 'as' => 'wisata.'], function () {
             Route::get('/', [WisataController::class, 'index'])->name('index');
