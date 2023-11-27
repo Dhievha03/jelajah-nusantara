@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProvinsiController;
+use App\Http\Controllers\Admin\WisataApprovalController;
 use App\Http\Controllers\Admin\WisataController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('/detail/{wisata}/{slug}', [WisataController::class, 'show'])->name('show');
             Route::delete('/{wisata}', [WisataController::class, 'destroy'])->name('delete');
             Route::get('/get-wisatas', [WisataController::class, 'getWisatas'])->name('getWisatas');
+        });
+
+        Route::group(['prefix' => 'wisata-approval', 'as' => 'wisata-approval.'], function () {
+            Route::get('/', [WisataApprovalController::class, 'index'])->name('index');
+            Route::post('/approve/{wisata}', [WisataApprovalController::class, 'approveWisata'])->name('approve');
+            Route::post('/reject/{wisata}', [WisataApprovalController::class, 'rejectWisata'])->name('reject');
+            Route::get('/detail/{wisata}/{slug}', [WisataApprovalController::class, 'show'])->name('show');
+            Route::get('/get-wisatas', [WisataApprovalController::class, 'getWisataApproval'])->name('getWisatas');
         });
     });
 });

@@ -23,7 +23,21 @@
               <div class="mt-4">
                 {!! $wisata->deskripsi !!}
               </div>
+
+              <div class="d-flex justify-content-end mt-4">
+                <form action="{{ route('admin.wisata-approval.reject', $wisata->id) }}" method="post">
+                  @csrf
+                  <button class="btn btn-danger mr-2">Tolak</button>
+                </form>
+
+                <form action="{{ route('admin.wisata-approval.approve', $wisata->id) }}" method="post">
+                  @csrf
+                  <button class="btn btn-success">Terima</button>
+                </form>
+              </div>
           </div>
+
+          
       </div>
   </div>
 

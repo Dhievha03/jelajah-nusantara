@@ -194,6 +194,22 @@ class WisataController extends Controller
                 ->addColumn('provinsi', function($row){
                     return $row->provinsi->nama ?? 'n/a';
                 })
+                ->addColumn('status', function($row){
+                    if($row->status == 1){
+                        $statusBadge = '
+                            <div class="btn btn-sm btn-success">Diterima</div>
+                        ';
+                    }elseif($row->status == 2){
+                        $statusBadge = '
+                            <div class="btn btn-sm btn-danger">Ditolak</div>
+                        ';
+                    }else{
+                        $statusBadge = '
+                            <div class="btn btn-sm btn-warning">Menunggu</div>
+                        ';
+                    }
+                    return $statusBadge;
+                })
                 ->addColumn('action', function ($row) {
                     $id = $row->id;
                     $show = route('admin.wisata.show', [$id, Str::slug($row->nama_wisata)]);
@@ -216,7 +232,7 @@ class WisataController extends Controller
         
                     return $actionBtn;
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['status', 'action'])
                 ->make(true);
         }
     }
