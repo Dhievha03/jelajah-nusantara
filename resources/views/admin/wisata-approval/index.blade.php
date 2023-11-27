@@ -34,8 +34,7 @@
       </div>
       @endif
       <div class="d-flex justify-content-between align-items-center">
-        <h5 class="font-weight-bold">Data Wisata</h5>
-        <a href="{{ route('admin.wisata.create') }}" class="btn btn-success">+ Tambah Wisata</a>
+        <h5 class="font-weight-bold">Data Wisata Yang Belum Dicek</h5>
       </div>
       <div class="table-responsive mt-4">
         <table class="table" id="data-table" style="width: 100%;">
@@ -45,7 +44,6 @@
                     <th>Nama Wisata</th>
                     <th>Nama Pengirim</th>
                     <th>Provinsi</th>
-                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -70,7 +68,7 @@
       responsive: true,
       autoWidth: true,
       scrollX: true,
-      ajax: "{{ route('admin.wisata.getWisatas') }}",
+      ajax: "{{ route('admin.wisata-approval.getWisatas') }}",
       columns: [
       {
           data: 'DT_RowIndex',
@@ -88,10 +86,6 @@
       {
           data: 'provinsi',
           name: 'provinsi',
-      },
-      {
-          data: 'status',
-          name: 'status',
       },
       {
           data: 'action',
