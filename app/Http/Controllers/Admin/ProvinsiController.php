@@ -27,9 +27,7 @@ class ProvinsiController extends Controller
      */
     public function create()
     {
-        $provinsis = new Provinsi;
-
-        return view('admin.provinsi.index', compact('provinsis'));
+        //
     }
 
     /**
@@ -49,7 +47,7 @@ class ProvinsiController extends Controller
         $provinsis->save();
 
         return redirect()->route('provinsi')
-            ->with('success', 'Provinsi created successfully.');
+            ->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -71,12 +69,7 @@ class ProvinsiController extends Controller
      */
     public function edit(Request $request)
     {
-        $provinsis = new Provinsi;
-        $provinsis->nama = $request->input('nama');
-        $provinsis->save();
-
-        return redirect()->route('provinsi')
-            ->with('success', 'Provinsi created successfully.');
+        //
     }
 
     /**
@@ -96,7 +89,7 @@ class ProvinsiController extends Controller
         $provinsis = Provinsi::find($id);
         $provinsis->update($request->all());
 
-        return redirect()->route('provinsi')->with('success', 'Provinsi updated successfully');
+        return redirect()->route('provinsi')->with('success', 'Data berhasil diubah');
     }
 
 
@@ -110,6 +103,6 @@ class ProvinsiController extends Controller
     {
         $provinsis = Provinsi::find($id);
         $provinsis->delete();
-        return redirect()->route('provinsi')->with('success', 'Provinsi deleted successfully');
+        return redirect()->route('provinsi')->with('success', 'Data berhasil dihapus');
     }
 }
