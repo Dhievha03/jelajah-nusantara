@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\ProvinsiController;
 use App\Http\Controllers\Admin\WisataApprovalController;
 use App\Http\Controllers\Admin\WisataController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\User\AuthController as UserAuthController;
+use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +23,41 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/login', [UserAuthController::class, 'login'])->name('user.login');
+Route::post('/authenticate', [UserAuthController::class, 'authenticate'])->name('user.authenticate');
+
+Route::get('/register', [UserAuthController::class, 'register'])->name('user.register');
+Route::post('/register', [UserAuthController::class,'registerStore'])->name('user.register.store');
+
+Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
+
+Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+    
+    Route::group(['middleware' => ['auth']], function() {
+        Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
+        Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout');
+
+        Route::group(['prefix' => 'wisata', 'as' => 'wisata.'], function () {
+            Route::get('/', [WisataController::class, 'index'])->name('index');
+            Route::get('/create', [WisataController::class, 'create'])->name('create');
+            Route::post('/create', [WisataController::class, 'store'])->name('store');
+            Route::get('/edit/{wisata}', [WisataController::class, 'edit'])->name('edit');
+            Route::put('/{wisata}', [WisataController::class, 'update'])->name('update');
+            Route::get('/detail/{wisata}/{slug}', [WisataController::class, 'show'])->name('show');
+            Route::delete('/{wisata}', [WisataController::class, 'destroy'])->name('delete');
+            Route::get('/get-wisatas', [WisataController::class, 'getWisatas'])->name('getWisatas');
+        });
+
+        Route::group(['prefix' => 'wisata-approval', 'as' => 'wisata-approval.'], function () {
+            Route::get('/', [WisataApprovalController::class, 'index'])->name('index');
+            Route::post('/approve/{wisata}', [WisataApprovalController::class, 'approveWisata'])->name('approve');
+            Route::post('/reject/{wisata}', [WisataApprovalController::class, 'rejectWisata'])->name('reject');
+            Route::get('/detail/{wisata}/{slug}', [WisataApprovalController::class, 'show'])->name('show');
+            Route::get('/get-wisatas', [WisataApprovalController::class, 'getWisataApproval'])->name('getWisatas');
+        });
+    });
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -59,7 +96,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         });
     });
 });
-Route::get('/admin/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/provinsi', [ProvinsiController::class, 'index'])->name('provinsi');;
 Route::post('/store', [ProvinsiController::class, 'store'])->name('store');
