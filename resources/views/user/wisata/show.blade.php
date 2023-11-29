@@ -1,13 +1,13 @@
-@extends('admin._layouts.main')
+@extends('user._layouts.dashboard')
 
 @section('content')
      <!-- Begin Page Content -->
 <div class="container-fluid">
 
  <!-- Page Heading -->
- <div class="d-sm-flex align-items-center justify-content-between mb-4">
-     <h1 class="h3 mb-0 text-gray-800">Detail Wisata</h1>
- </div>
+  <div class="card p-4 mb-4">
+    <h5 class="font-weight-bold p-0 m-0">Detail Wisata</h5>
+  </div>
 
  <!-- Content Row -->
  <div class="row">
@@ -23,21 +23,7 @@
               <div class="mt-4">
                 {!! $wisata->deskripsi !!}
               </div>
-              <hr>
-              <div class="d-flex justify-content-end mt-2">
-                <form action="{{ route('admin.wisata-approval.reject', $wisata->id) }}" method="post">
-                  @csrf
-                  <button class="btn btn-danger mr-2">Tolak</button>
-                </form>
-
-                <form action="{{ route('admin.wisata-approval.approve', $wisata->id) }}" method="post">
-                  @csrf
-                  <button class="btn btn-success">Terima</button>
-                </form>
-              </div>
           </div>
-
-          
       </div>
   </div>
 

@@ -46,7 +46,7 @@ class ProvinsiController extends Controller
         $provinsis->nama = $request->input('nama');
         $provinsis->save();
 
-        return redirect()->route('provinsi')
+        return redirect()->route('admin.provinsi.index')
             ->with('success', 'Data berhasil disimpan');
     }
 
@@ -89,7 +89,7 @@ class ProvinsiController extends Controller
         $provinsis = Provinsi::find($id);
         $provinsis->update($request->all());
 
-        return redirect()->route('provinsi')->with('success', 'Data berhasil diubah');
+        return redirect()->route('admin.provinsi.index')->with('success', 'Data berhasil diubah');
     }
 
 
@@ -103,6 +103,6 @@ class ProvinsiController extends Controller
     {
         $provinsis = Provinsi::find($id);
         $provinsis->delete();
-        return redirect()->route('provinsi')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('admin.provinsi.index')->with('success', 'Data berhasil dihapus');
     }
 }
