@@ -97,11 +97,3 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     });
 });
 
-Route::get('/provinsi', [ProvinsiController::class, 'index'])->name('provinsi');;
-Route::post('/store', [ProvinsiController::class, 'store'])->name('store');
-
-Route::get('/create', [ProvinsiController::class, 'create'])->name('create');
-Route::get('/edit/{id}', [ProvinsiController::class, 'edit'])->name('edit');
-Route::put('/update/{id}', [ProvinsiController::class, 'update'])->name('update');
-
-Route::delete('/destroy/{id}', [ProvinsiController::class, 'destroy'])->name('destroy');
