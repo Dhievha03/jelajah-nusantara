@@ -11,23 +11,23 @@
 
         <!-- Content Row -->
         <div class="row">
-            <div class="col">
+            <div class="col-4">
                 <div class="card p-4 mb-4">
                     @if (session()->has('success'))
-                    <div class="alert alert-success alert-dismissible" role="alert">
-                        {{ session()->get('success') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            {{ session()->get('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
                     @endif
                     @if (session()->has('error'))
-                    <div class="alert alert-danger alert-dismissible" role="alert">
-                        {{ session()->get('error') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            {{ session()->get('error') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
                     @endif
                     <!-- Formulir Create -->
                     <form action="{{ route('admin.provinsi.store') }}" method="POST">
@@ -40,9 +40,7 @@
                     </form>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
+            <div class="col-8">
                 <div class="card p-4 mb-4">
                     <table class="table table-bordered mt-4">
                         <thead>
@@ -59,26 +57,17 @@
                                     <td>{{ $provinsi->nama }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            @if (isset($provinsi))
-                                                <form action="{{ route('admin.provinsi.update', $provinsi->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <div class="form-group">
-                                                        <label for="nama">Update Provinsi:</label>
-                                                        <input type="text" name="nama" value="{{ $provinsi->nama }}"
-                                                            required>
-                                                        <button type="submit" class="btn btn-info btn-icon-split"
-                                                            style="margin-right: 5px;">
-                                                            <span class="icon text-white-50">
-                                                                <i class="fas fa-info-circle"></i>
-                                                            </span>
-                                                            <span class="text">Edit</span>
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            @endif
-                                            <form action="{{ route('admin.provinsi.delete', $provinsi->id) }}" method="POST"
-                                                style="display: inline;">
+                                            <div class="mr-2">
+                                                <button type="button" class="btn btn-info btn-icon-split"
+                                                    data-toggle="modal" data-target="#editModal{{ $provinsi->id }}">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-info-circle"></i>
+                                                    </span>
+                                                    <span class="text">Edit</span>
+                                                </button>
+                                            </div>
+                                            <form action="{{ route('admin.provinsi.delete', $provinsi->id) }}"
+                                                method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-icon-split"
@@ -90,6 +79,38 @@
                                                 </button>
                                             </form>
                                         </div>
+                                        <!-- Modal Edit -->
+                                        <div class="modal fade" id="editModal{{ $provinsi->id }}" tabindex="-1"
+                                            role="dialog" aria-labelledby="editModalLabel{{ $provinsi->id }}"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="editModalLabel{{ $provinsi->id }}">Edit
+                                                            Provinsi</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form
+                                                            action="{{ route('admin.provinsi.update', ['id' => $provinsi->id]) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <div class="form-group">
+                                                                <label for="nama">Update Provinsi:</label>
+                                                                <input type="text" class="form-control" name="nama"
+                                                                    value="{{ $provinsi->nama }}" required>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-success">Update</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Modal Edit -->
                                     </td>
                                 </tr>
                             @endforeach
