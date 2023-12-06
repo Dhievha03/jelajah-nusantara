@@ -37,7 +37,7 @@
 
       <div class="signin">
         <p>Or sign up with</p>
-        <a href="https://google.com" title="google" class="google-icon"> <i class="fa-brands fa-google"> </i> </a>
+        <a href="{{ route('user.login.google') }}" title="google" class="google-icon"> <i class="fa-brands fa-google"> </i> </a>
         <p>Already have an account? <br>
           <a href="{{ route('user.login') }}" title="page sign in" class="sign-icon"> Sign in </a></p>
       </div>

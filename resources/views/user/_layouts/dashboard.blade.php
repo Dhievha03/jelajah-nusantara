@@ -22,6 +22,34 @@
                 <!-- Topbar -->
                 @include('user._partials.dashboard.navbar')
                 <!-- End of Topbar -->
+                
+                <div class="container-fluid">
+                    @if (!Auth::user()->password)
+                    <div class="alert alert-warning alert-dismissible" role="alert">
+                        Kamu belum memiliki password. Segera buat password di halaman <a href="{{ route('user.profile') }}" style="color: inherit; font-weight: bold">Profile</a> 
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+
+                    @if (session()->has('success'))
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        {{ session()->get('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+                    @if (session()->has('error'))
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        {{ session()->get('error') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+                </div>
 
                 <!-- Begin Page Content -->
                 @yield('content')
