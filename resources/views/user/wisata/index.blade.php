@@ -12,22 +12,6 @@
  <div class="row">
   <div class="col-lg-12">
     <div class="card p-4 mb-4">
-      @if (session()->has('success'))
-      <div class="alert alert-success alert-dismissible" role="alert">
-          {{ session()->get('success') }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-      @endif
-      @if (session()->has('error'))
-      <div class="alert alert-danger alert-dismissible" role="alert">
-          {{ session()->get('error') }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-      @endif
       <div class="d-flex justify-content-between align-items-center">
         <h5 class="font-weight-bold">Data Wisata</h5>
         <a href="{{ route('user.wisata.create') }}" class="btn btn-success">+ Tambah Wisata</a>

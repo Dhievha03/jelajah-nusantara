@@ -9,22 +9,6 @@
     <h5 class="font-weight-bold p-0 m-0">Profil Saya</h5>
  </div>
 
-  @if (session()->has('success'))
-  <div class="alert alert-success alert-dismissible" role="alert">
-      {{ session()->get('success') }}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-  </div>
-  @endif
-  @if (session()->has('error'))
-  <div class="alert alert-danger alert-dismissible" role="alert">
-      {{ session()->get('error') }}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-  </div>
-  @endif
  <!-- Content Row -->
   <form action="{{ route('user.profile.update') }}" method="post" enctype="multipart/form-data" class="row">
     @method('PUT')
@@ -32,8 +16,8 @@
     <div class="col-md-3 mb-4">
         <div class="card p-4">
             <div class="col-md-12">
-                <div class="rounded-circle position-relative d-flex align-items-center justify-content-center" style="width: 100%; height: 0; padding-bottom: 100%; overflow: hidden; border: 2px solid #A4A4A4">
-                    <img id="profile-image" class="position-absolute w-100 h-100" src="{{ asset('storage/profile/' . Auth::user()->foto) }}" onerror="this.src='{{ asset('user/img/user.png') }}';" style="top: 0" alt="Lingkaran dengan Background Image">
+                <div class="rounded-circle position-relative d-flex align-items-center justify-content-center" style="width: 100%; height: 0; padding-bottom: 100%; overflow: hidden; border: 2px solid #ebebeb">
+                    <img id="profile-image" class="position-absolute w-100 h-100" src="{{ asset('storage/profile/' . Auth::user()->foto) }}" onerror="this.src='{{ asset('template-admin/img/undraw_profile.svg') }}';" style="top: 0" alt="Lingkaran dengan Background Image">
                 </div>
                 <label class="btn btn-primary w-100 mt-4" onclick="document.getElementById('upload-photo').click()">Ubah Foto</label>
                 <input name="foto" type="file" id="upload-photo" class="d-none" accept="image/*"/>

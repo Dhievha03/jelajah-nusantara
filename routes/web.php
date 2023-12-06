@@ -28,16 +28,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/trending', [TrendingController::class, 'index'])->name('trending');
-Route::get('/detail/{id}', [TrendingController::class, 'show'])->name('detail');
-
 Route::get('/login', [UserAuthController::class, 'login'])->name('user.login');
 Route::post('/authenticate', [UserAuthController::class, 'authenticate'])->name('user.authenticate');
+
+// login google
+Route::get('/login/google', [UserAuthController::class, 'redirectGoogle'])->name('user.login.google');
+Route::get('/login/google/callback', [UserAuthController::class, 'handleGoogleCallback']);
 
 Route::get('/register', [UserAuthController::class, 'register'])->name('user.register');
 Route::post('/register', [UserAuthController::class, 'registerStore'])->name('user.register.store');
 
-Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
+Route::get('/trending', [TrendingController::class, 'index'])->name('trending');
+Route::get('/detail/{id}', [TrendingController::class, 'show'])->name('detail');
 
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
 

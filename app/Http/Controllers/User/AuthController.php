@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -52,6 +53,32 @@ class AuthController extends Controller
         ]);
 
         return redirect()->route('user.login')->with('success', 'Akun telah dibuat silahkan login terlebih dahulu');
+    }
+
+    public function redirectGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleGoogleCallback()
+    {
+        try{
+            $user = Socialite::driver('google')->user();
+            $cek_user = User::where('email', $user->email)->first();
+            if ($cek_user) {
+                Auth::login($cek_user);
+                return redirect()->route('user.dashboard');
+            }else{
+                $new_user = User::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                ]);
+                Auth::login($new_user);
+                return redirect()->route('user.dashboard');
+            }  
+        }catch(\Throwable $th){
+            return 403;
+        }
     }
 
     public function logout()
