@@ -29,18 +29,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/trending', [TrendingController::class, 'index'])->name('trending');
+Route::get('/detail/{id}', [TrendingController::class, 'show'])->name('detail');
 
 Route::get('/login', [UserAuthController::class, 'login'])->name('user.login');
 Route::post('/authenticate', [UserAuthController::class, 'authenticate'])->name('user.authenticate');
 
 Route::get('/register', [UserAuthController::class, 'register'])->name('user.register');
-Route::post('/register', [UserAuthController::class,'registerStore'])->name('user.register.store');
+Route::post('/register', [UserAuthController::class, 'registerStore'])->name('user.register.store');
 
 Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
 
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
-    
-    Route::group(['middleware' => ['auth']], function() {
+
+    Route::group(['middleware' => ['auth']], function () {
         Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
         Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout');
 
@@ -67,7 +68,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/login', [AuthController::class, 'index'])->middleware('guest')->name('login');
     Route::post('/login/authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
 
-    Route::group(['middleware' => ['auth:admin']], function() {
+    Route::group(['middleware' => ['auth:admin']], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -98,4 +99,3 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         });
     });
 });
-
