@@ -41,6 +41,8 @@ Route::post('/register', [UserAuthController::class, 'registerStore'])->name('us
 Route::get('/trending', [TrendingController::class, 'index'])->name('trending');
 Route::get('/detail/{id}', [TrendingController::class, 'show'])->name('detail');
 
+Route::view('/detail-wisata', 'page.wisata.detail');
+
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
 
     Route::group(['middleware' => ['auth']], function () {
