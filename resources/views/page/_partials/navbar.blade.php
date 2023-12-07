@@ -10,8 +10,8 @@
                 <li class="nav-item {{ Route::is('page.trending.*') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('trending') }}">Trending</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Wisata</a>
+                <li class="nav-item {{ Route::is('page.wisata.*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('wisata') }}">Wisata</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>

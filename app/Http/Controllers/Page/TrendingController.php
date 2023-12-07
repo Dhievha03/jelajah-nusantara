@@ -16,11 +16,4 @@ class TrendingController extends Controller
         $select = Provinsi::get();
         return view('page.trending', compact('cards', 'select'));
     }
-
-    public function show(Trending $cards, $id)
-    {
-        $cards = Wisata::findOrFail($id);
-
-        return view('page.detail', compact('cards'));
-    }
 }
