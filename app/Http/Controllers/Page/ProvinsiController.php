@@ -1,25 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\page;
+namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
 use App\Models\Provinsi;
 use App\Models\Wisata;
-use App\Models\Trending;
 use Illuminate\Http\Request;
 
-class TrendingController extends Controller
+class ProvinsiController extends Controller
 {
     public function index()
     {
-        return view('page.trending');
+        $wisata = Wisata::where('status', 1)->with('provinsi')->get();
+        return view('page.provinsi.index', [
+            'wisata' => $wisata
+        ]);
     }
 
-    public function provinsi($id)
+    public function detail($id)
     {
         $provinsi = Provinsi::where('id', $id)->first();
         $wisata = Wisata::where('prov_id', $id)->where('status', '1')->with('provinsi')->get();
-        return view('page.trending.provinsi', [
+        return view('page.provinsi.detail', [
             'wisata' => $wisata,
             'provinsi' => $provinsi
         ]);

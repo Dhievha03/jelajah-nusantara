@@ -1,27 +1,39 @@
-<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+<nav class="navbar navbar-expand-md navbar-light fixed-top custom-navbar">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('home') }}">Jelajah Nusantara</a>
+        <a class="navbar-brand" href="{{ route('home') }}">
+            <img
+            src="{{ asset('logo/logo-no-background.png') }}"
+            alt="Jelajah Nusantara"
+            class="navbar-logo"
+          />
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item {{ Route::is('page.trending.*') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('trending') }}">Trending</a>
+                <li class="nav-item {{ Route::is('page.provinsi.*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('page.provinsi') }}">Provinsi</a>
                 </li>
-                <li class="nav-item {{ Route::is('page.wisata.*') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('wisata') }}">Wisata</a>
+                <li class="nav-item {{ Route::is('page.wisata.*') || Route::is('page.wisata') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('page.wisata') }}">Wisata</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
                 </li>
             </ul>
             <div>
-                <a href="{{ route('user.login') }}" class="text-white text-decoration-none px-4 py-1 rounded-5"
-                    style="background-color: blue">Login</a>
+                @if (Auth::check())
+                <a href="{{ route('user.dashboard') }}" class="text-white text-decoration-none px-4 py-2 rounded-5"
+                style="background-color: #0b2f8a"">{{ explode(' ', Auth::user()->name)[0] }}</a>
+                @else
+                <a href="{{ route('user.login') }}" class="text-white text-decoration-none px-4 py-2 rounded-5"
+                    style="background-color: #0b2f8a"">Login</a>
                 <a href="{{ route('user.register') }}"
-                    class="text-blue text-decoration-none px-3 py-1 rounded-5 border border-primary">Sign Up</a>
+                    class="text-blue text-decoration-none px-4 py-2 rounded-5 border border-primary">Sign Up</a>
+                @endif
+               
             </div>
         </div>
     </div>

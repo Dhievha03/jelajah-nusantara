@@ -16,7 +16,7 @@ class WisataPageController extends Controller
         return view('page.wisata.index', compact('cards', 'select'));
     }
 
-    public function show(Wisata $cards, $id)
+    public function detail($id, $slug)
     {
         $cards = Wisata::findOrFail($id);
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\WisataApprovalController;
 use App\Http\Controllers\Admin\WisataController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Page\HomeController;
+use App\Http\Controllers\Page\ProvinsiController as PageProvinsiController;
 use App\Http\Controllers\Page\TrendingController;
 use App\Http\Controllers\Page\WisataPageController;
 use App\Http\Controllers\User\AuthController as UserAuthController;
@@ -39,11 +40,12 @@ Route::get('/login/google/callback', [UserAuthController::class, 'handleGoogleCa
 Route::get('/register', [UserAuthController::class, 'register'])->name('user.register');
 Route::post('/register', [UserAuthController::class, 'registerStore'])->name('user.register.store');
 
-Route::get('/trending', [TrendingController::class, 'index'])->name('trending');
+Route::get('/provinsi', [PageProvinsiController::class, 'index'])->name('page.provinsi');
+Route::get('/provinsi/{id}/{slug}', [PageProvinsiController::class, 'detail'])->name('page.provinsi.detail');
 
-Route::get('/wisata', [WisataPageController::class, 'index'])->name('wisata');
-Route::get('/search', [WisataPageController::class, 'search'])->name('search');
-Route::get('/detail/{id}', [WisataPageController::class, 'show'])->name('detail');
+Route::get('/wisata', [WisataPageController::class, 'index'])->name('page.wisata');
+Route::get('/search', [WisataPageController::class, 'search'])->name('page.wisata.search');
+Route::get('/detail/{id}/{slug}', [WisataPageController::class, 'detail'])->name('page.wisata.detail');
 
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
 
