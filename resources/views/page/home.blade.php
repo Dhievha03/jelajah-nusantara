@@ -2,7 +2,16 @@
 @section('title', 'Home')
 
 @section('header')
-    <div class="bg-image" style="background-image: url('{{ asset('page/img/background.png') }}'); height: 80vh"></div>
+    <div class="header-container">
+        <div class="bg-black-sh"></div>
+        <div class="container">
+            <div class="header-content-text">
+                <p class="p-0 m-0" style="font-size: 36px">Selamat Datang di</p>
+                <p style="font-size: 48px; color: rgb(250, 178, 43)">Jelajah Nusantara</p>
+            </div>
+        </div>
+        <img class="w-100 h-100" style="object-fit: cover; object-position: center" src="{{ asset('page/img/background-3.png') }}" alt="" srcset="">
+    </div>
 @endsection
 
 @section('content')
@@ -10,9 +19,8 @@
         <section>
             <div class="row">
                 <div class="col-md-6 gx-5 mb-2">
-                    <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                    <div class="bg-image rounded-5">
                         <img src="https://mdbootstrap.com/img/new/slides/031.jpg" class="img-fluid" />
-                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                     </div>
                 </div>
 
@@ -54,7 +62,7 @@
                                     <p class="card-text">
                                         {{ Str::limit(strip_tags($card->deskripsi), $limit = 100, $end = '...') }}
                                         @if (strlen(strip_tags($card->deskripsi)) > 100)
-                                            <a href="{{ route('detail', ['id' => $card->id]) }}">Read More</a>
+                                            <a href="{{ route('page.wisata.detail', [$card->id, Str::slug($card->nama_wisata)]) }}">Read More</a>
                                         @endif
                                     </p>
                                 </div>
