@@ -21,7 +21,7 @@
                         <p class="card-text">
                             {{ Str::limit(strip_tags($item->deskripsi), $limit = 100, $end = '...') }}
                             @if (strlen(strip_tags($item->deskripsi)) > 100)
-                                <a href="{{ route('detail', ['id' => $item->id]) }}">Read
+                                <a href="{{ route('page.wisata.detail', [$item->id, Str::slug($item->nama_wisata)]) }}">Read
                                     More</a>
                             @endif
                         </p>
