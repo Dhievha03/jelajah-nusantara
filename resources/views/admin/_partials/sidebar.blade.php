@@ -18,6 +18,17 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
+    <li class="nav-item {{ Route::is('admin.admin.*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.admin.index') }}">
+            <i class="fas fa-fw fa fa-user"></i>
+            <span>Admin</span></a>
+    </li>
+
+    <li class="nav-item {{ Route::is('admin.user.*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.user.index') }}">
+            <i class="fas fa-fw fa fa-users"></i>
+            <span>User</span></a>
+    </li>
     <li class="nav-item {{ Route::is('admin.provinsi.*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.provinsi.index') }}">
             <i class="fas fa-fw fa fa-map"></i>
