@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Provinsi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProvinsiController extends Controller
 {
@@ -40,14 +41,26 @@ class ProvinsiController extends Controller
     {
         $request->validate([
             'nama' => 'required',
+            'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
-        $provinsis = new Provinsi;
-        $provinsis->nama = $request->input('nama');
-        $provinsis->save();
+        $imagePath = null;
+        if ($request->hasFile('foto')) {
+            $image = $request->file('foto');
+            $imageName = Str::random(16) . '.' . $image->getClientOriginalExtension();
+            $imagePath = $image->storeAs('public/provinsi', $imageName);
+        }
 
-        return redirect()->route('admin.provinsi.index')
-            ->with('success', 'Data berhasil disimpan');
+        if ($imagePath) {
+            Provinsi::create([
+                'nama' => $request->nama,
+                'foto' => $imageName,
+            ]);
+        
+            return redirect()->route('admin.provinsi.index')->with('success', 'Data berhasil disimpan.');
+        }else{
+            return back()->with('error', 'Ups sepertinya ada yang salah');
+        }
     }
 
     /**
@@ -67,9 +80,12 @@ class ProvinsiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit($id)
     {
-        //
+        $provinsi = Provinsi::find($id);
+        return view('admin.provinsi.index', [
+            'provinsi' => $provinsi
+        ]);
     }
 
     /**
@@ -84,12 +100,34 @@ class ProvinsiController extends Controller
     {
         $request->validate([
             'nama' => 'required',
+            'foto' => 'image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
-        $provinsis = Provinsi::find($id);
-        $provinsis->update($request->all());
+        $provinsi = Provinsi::find($id);
 
-        return redirect()->route('admin.provinsi.index')->with('success', 'Data berhasil diubah');
+        $imagePath = null;
+        if ($request->hasFile('foto')) {
+            $image = $request->file('foto');
+            $imageName = Str::random(16) . '.' . $image->getClientOriginalExtension();
+            $imagePath = $image->storeAs('public/provinsi', $imageName);
+
+            if ($imagePath) {
+                $provinsi->update([
+                    'nama' => $request->nama,
+                    'foto' => $imageName,
+                ]);
+            
+                return redirect()->route('admin.provinsi.index')->with('success', 'Data berhasil diubah.');
+            }else{
+                return back()->with('error', 'Ups sepertinya ada yang salah');
+            }
+        }
+
+        $provinsi->update([
+            'nama' => $request->nama,
+        ]);
+    
+        return redirect()->route('admin.provinsi.index')->with('success', 'Data berhasil diubah.');
     }
 
 
@@ -104,5 +142,36 @@ class ProvinsiController extends Controller
         $provinsis = Provinsi::find($id);
         $provinsis->delete();
         return redirect()->route('admin.provinsi.index')->with('success', 'Data berhasil dihapus');
+    }
+
+    public function getProvinsis(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Provinsi::get();
+            return datatables()->of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $id = $row->id;
+                    $edit = route('admin.provinsi.edit', $id);
+                    $delete = route('admin.provinsi.delete', $id);
+        
+                    $actionBtn = '
+                    <div class="d-flex gap-1">
+
+                    <a href="' . $edit . '" class="btn btn-sm btn-icon btn-warning m-1"><i class="far fa-edit"></i></a>
+        
+                    <form method="POST" action="' . $delete . '">
+                    ' . method_field('DELETE') . '
+                    ' . csrf_field() . '
+                    <button type="submit" class="btn btn-sm btn-icon btn-danger m-1" onclick="return confirm(\'Anda yakin?\')"><i class="fas fa-trash-alt"></i></button>
+                    </form>
+                    </div>
+                    ';
+        
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
     }
 }

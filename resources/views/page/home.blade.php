@@ -49,7 +49,7 @@
         <div class="container">
             <div class="row g-4">
                 @forelse ($wisata as $item)
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <a href="{{ route('page.wisata.detail', [$item->id, Str::slug($item->nama_wisata)]) }}" style="color: black; text-decoration: none">
                         <div class="card h-100">
                             <img src="{{ asset('storage/wisata/' . $item->foto) }}" class="card-img-top"

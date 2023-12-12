@@ -112,6 +112,11 @@ body {
     font-weight: bold;
 }
 
+.wisata-search{
+    z-index: 10; 
+    width: 50%
+}
+
 .btn {
   height: 45px;
   width: 150px;
@@ -176,6 +181,10 @@ body {
         text-align: center;
         margin-top: 10px;
     }
+
+    .wisata-search{
+        width: 95% !important;
+    }
 }
 
 @media (max-width: 767px) {
@@ -211,5 +220,9 @@ body {
 
     .card-body {
         padding: 10px;
+    }
+
+    .wisata-search{
+        width: 80%
     }
 }

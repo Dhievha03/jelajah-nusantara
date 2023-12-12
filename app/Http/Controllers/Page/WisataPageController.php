@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
-use App\Models\Provinsi;
 use App\Models\Wisata;
 use Illuminate\Http\Request;
 
@@ -11,9 +10,9 @@ class WisataPageController extends Controller
 {
     public function index()
     {
-        $cards = Wisata::select('id', 'nama_wisata', 'deskripsi', 'foto')->where('status', '=', '1')->get();
-        $select = Provinsi::get();
-        return view('page.wisata.index', compact('cards', 'select'));
+        $keyword = '';
+        $wisata = Wisata::select('id', 'prov_id', 'user_id', 'nama_wisata', 'deskripsi', 'foto', 'created_at')->with('provinsi')->where('status', '=', '1')->paginate(8);
+        return view('page.wisata.index', compact('wisata', 'keyword'));
     }
 
     public function detail($id, $slug)
@@ -28,11 +27,11 @@ class WisataPageController extends Controller
         $keyword = $request->input('keyword');
 
         if ($keyword) {
-            $cards = Wisata::where('nama_wisata', 'LIKE', '%' . $keyword . '%')->get();
+            $wisata = Wisata::where('nama_wisata', 'LIKE', '%' . $keyword . '%')->paginate(8)->appends(request()->query());;
         } else {
-            $cards = Wisata::all();
+            $wisata = Wisata::paginate(8)->appends(request()->query());
         }
 
-        return view('page.wisata.index', compact('keyword', 'cards'));
+        return view('page.wisata.index', compact('keyword', 'wisata', 'keyword'));
     }
 }
