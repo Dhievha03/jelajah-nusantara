@@ -7,7 +7,7 @@
         <div class="container">
             <div class="header-content-text">
                 <p class="p-0 m-0" style="font-size: 36px">Selamat Datang di</p>
-                <p style="font-size: 48px; color: rgb(250, 178, 43)">Jelajah Nusantara</p>
+                <p class="text-app-secondary" style="font-size: 48px;">Jelajah Nusantara</p>
             </div>
         </div>
         <img class="w-100 h-100" style="object-fit: cover; object-position: center" src="{{ asset('page/img/background-3.png') }}" alt="" srcset="">
@@ -45,31 +45,33 @@
     </div>
 
     <section id="trending">
-        <h1 class="text-center my-5">Trending</h1>
+        <h2 class="text-center my-5">Wisata Terbaru</h2>
         <div class="container">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                @for ($i = 0; $i < 3; $i++)
-                    @if (isset($cards[$i]))
-                        @php
-                            $card = $cards[$i];
-                        @endphp
-                        <div class="col">
-                            <div class="card h-100">
-                                <img src="{{ asset('storage/wisata/' . $card->foto) }}" class="card-img-top"
-                                    alt="Card Image" />
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $card->nama_wisata }}</h5>
-                                    <p class="card-text">
-                                        {{ Str::limit(strip_tags($card->deskripsi), $limit = 100, $end = '...') }}
-                                        @if (strlen(strip_tags($card->deskripsi)) > 100)
-                                            <a href="{{ route('page.wisata.detail', [$card->id, Str::slug($card->nama_wisata)]) }}">Read More</a>
-                                        @endif
-                                    </p>
-                                </div>
+            <div class="row g-4">
+                @forelse ($wisata as $item)
+                <div class="col-md-4">
+                    <a href="{{ route('page.wisata.detail', [$item->id, Str::slug($item->nama_wisata)]) }}" style="color: black; text-decoration: none">
+                        <div class="card h-100">
+                            <img src="{{ asset('storage/wisata/' . $item->foto) }}" class="card-img-top"
+                                alt="Card Image" />
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">{{ $item->nama_wisata }}</h5>
+                                <div class="px-2 py-1 text-white bg-app-secondary rounded d-inline-block">{{ $item->provinsi->nama }}</div>
+                                <small class="d-block text-muted my-2"><i class="bi bi-person-fill"></i> {{ $item->user->name }}</small>
+                                <small class="d-block text-muted my-2"><i class="bi bi-clock"></i> {{ \Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y') }}</small>
+                                <p class="card-text">
+                                    {{ Str::limit(strip_tags($item->deskripsi), $limit = 100, $end = '...') }}
+                                    @if (strlen(strip_tags($item->deskripsi)) > 100)
+                                        <a href="{{ route('page.wisata.detail', [$item->id, Str::slug($item->nama_wisata)]) }}">Lihat Selengkapnya</a>
+                                    @endif
+                                </p>
                             </div>
                         </div>
-                    @endif
-                @endfor
+                    </a>
+                </div>
+                @empty
+                    
+                @endforelse
             </div>
         </div>
     </section>

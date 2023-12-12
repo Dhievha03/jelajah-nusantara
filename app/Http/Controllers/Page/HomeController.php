@@ -11,8 +11,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $cards = Wisata::select('id', 'nama_wisata', 'deskripsi', 'foto')->where('status', '=', '1')->get();
-        return view('page.home', compact('cards'));
+        $wisata = Wisata::select('id', 'prov_id', 'user_id', 'nama_wisata', 'deskripsi', 'foto', 'created_at')->with('provinsi')->where('status', '=', '1')->limit(3)->get();
+        return view('page.home', compact('wisata'));
     }
 
     public function show(Trending $cards, $id)
