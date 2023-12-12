@@ -11,16 +11,16 @@ class ProvinsiController extends Controller
 {
     public function index()
     {
-        $wisata = Wisata::where('status', 1)->with('provinsi')->get();
+        $provinsi = Provinsi::get();
         return view('page.provinsi.index', [
-            'wisata' => $wisata
+            'provinsi' => $provinsi
         ]);
     }
 
     public function detail($id)
     {
         $provinsi = Provinsi::where('id', $id)->first();
-        $wisata = Wisata::where('prov_id', $id)->where('status', '1')->with('provinsi')->get();
+        $wisata = Wisata::where('prov_id', $id)->where('status', '1')->with('provinsi')->paginate(8);
         return view('page.provinsi.detail', [
             'wisata' => $wisata,
             'provinsi' => $provinsi

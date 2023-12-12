@@ -6,7 +6,23 @@
 
 body {
     overflow-x: hidden;
-    background-color: aliceblue;
+    background-color: #f8f9fc !important;
+}
+
+.text-app-primary{
+    color: #0b2f8a
+}
+
+.text-app-secondary{
+    color: rgb(250, 178, 43)
+}
+
+.bg-app-primary{
+    background-color: #0b2f8a;
+}
+
+.bg-app-secondary{
+    background-color: rgb(250, 178, 43)
 }
 
 .navbar-logo {
@@ -73,7 +89,7 @@ body {
 }
 
 .header-container {
-  height: 90vh;
+  height: 70vh;
   width: 100vw;
   position: relative;
 }
@@ -94,6 +110,11 @@ body {
 
 .header-content-text p{
     font-weight: bold;
+}
+
+.wisata-search{
+    z-index: 10; 
+    width: 50%
 }
 
 .btn {
@@ -160,6 +181,10 @@ body {
         text-align: center;
         margin-top: 10px;
     }
+
+    .wisata-search{
+        width: 95% !important;
+    }
 }
 
 @media (max-width: 767px) {
@@ -195,5 +220,9 @@ body {
 
     .card-body {
         padding: 10px;
+    }
+
+    .wisata-search{
+        width: 80%
     }
 }

@@ -45,7 +45,7 @@ Route::get('/provinsi', [PageProvinsiController::class, 'index'])->name('page.pr
 Route::get('/provinsi/{id}/{slug}', [PageProvinsiController::class, 'detail'])->name('page.provinsi.detail');
 
 Route::get('/wisata', [WisataPageController::class, 'index'])->name('page.wisata');
-Route::get('/search', [WisataPageController::class, 'search'])->name('page.wisata.search');
+Route::get('/wisata/search', [WisataPageController::class, 'search'])->name('page.wisata.search');
 Route::get('/detail/{id}/{slug}', [WisataPageController::class, 'detail'])->name('page.wisata.detail');
 
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
@@ -84,8 +84,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::group(['prefix' => 'provinsi', 'as' => 'provinsi.'], function () {
             Route::get('/', [ProvinsiController::class, 'index'])->name('index');
             Route::post('/store', [ProvinsiController::class, 'store'])->name('store');
+            Route::get('/edit/{id}', [ProvinsiController::class, 'edit'])->name('edit');
             Route::put('/update/{id}', [ProvinsiController::class, 'update'])->name('update');
             Route::delete('/destroy/{id}', [ProvinsiController::class, 'destroy'])->name('delete');
+            Route::get('/get-provinsis', [ProvinsiController::class, 'getProvinsis'])->name('getProvinsis');
         });
 
         Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {

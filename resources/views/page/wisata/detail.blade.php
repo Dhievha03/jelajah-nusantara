@@ -13,9 +13,10 @@
                                 <p style="font-size: 14px">{{ $cards->user->name }} |
                                     {{ $cards->created_at->diffForHumans() }} </p>
                             </div>
-                            <div style="min-width: 44px; cursor: pointer; text-align: right">
-                                <i class="bi bi-bookmark-fill" style="font-size: 28px; color: #a4a4a4"></i>
-                            </div>
+                            @auth
+                                @livewire('saved-button', ['wisataId' => $cards->id])
+                            @endauth
+                            
                         </div>
 
                         <hr class="pt-0 mt-0" />
