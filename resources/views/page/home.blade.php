@@ -47,7 +47,7 @@
     <section id="trending">
         <h2 class="text-center my-5">Wisata Terbaru</h2>
         <div class="container">
-            <div class="row g-4">
+            <div class="row g-4 mb-4">
                 @forelse ($wisata as $item)
                 <div class="col-md-3">
                     <a href="{{ route('page.wisata.detail', [$item->id, Str::slug($item->nama_wisata)]) }}" style="color: black; text-decoration: none">
@@ -70,7 +70,9 @@
                     </a>
                 </div>
                 @empty
-                    
+                    <div class="text-center">
+                        Belum ada data tersedia
+                    </div>
                 @endforelse
             </div>
         </div>
