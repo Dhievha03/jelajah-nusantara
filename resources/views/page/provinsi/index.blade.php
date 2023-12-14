@@ -15,7 +15,7 @@
 @endsection
 
 @section('content')
-  <section id="content" class="container">
+  <section id="content" class="container mb-4">
     <div class="row g-4">
         @forelse ($provinsi as $item)
         <div class="col-xl-3 col-md-4">
@@ -30,7 +30,9 @@
             </a>
         </div>
         @empty
-            
+        <div class="text-center">
+            Belum ada data tersedia
+        </div>
         @endforelse
     </div>
   </section>

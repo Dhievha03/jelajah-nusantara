@@ -87,7 +87,8 @@
           <img id="imagePreview" src="#" alt="Preview" class="mb-2" style="display:none;width: 100%">
           <img id="imageOld" src="{{ asset('storage/wisata/' . $wisata->foto) }}" alt="Preview" class="mb-2" style="display: block;width: 100%">
           <label>Foto</label>
-          <input type="file" class="form-control @error('foto') is-invalid @enderror form-control-file" id="imageInput" onchange="previewImage()" name="foto" value="{{ old('foto') }}">
+          <input type="file" class="form-control @error('foto') is-invalid @enderror form-control-file" id="imageInput" onchange="previewImage()" name="foto" value="{{ old('foto') }}" accept=".jpg, .jpeg, .png, .gif">
+          <small class="text-danger">Ukuran gambar maksimal 2MB</small><br>
           <small class="text-danger">Abaikan jika tidak ingin mengubah foto</small>
           @error('foto')
               <div class="invalid-feedback">{{$message}}</div>

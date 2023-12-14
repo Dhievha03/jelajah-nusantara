@@ -24,7 +24,7 @@
     <form action="{{ route('user.wisata.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
       <div class="row">
-        <div class="form-group col-md-6 mb-4">
+        <div class="form-group col-md-6 mb-2">
             <label>Nama Tempat Wisata</label>
             <input type="text" class="form-control @error('nama_wisata') is-invalid @enderror" name="nama_wisata" value="{{ old('nama_wisata') }}" placeholder="Nama tempat wisata">
             @error('nama_wisata')
@@ -32,15 +32,22 @@
             @enderror
         </div>
 
-        <div class="form-group col-md-6 mb-4">
+        <div class="form-group col-md-6 mb-2">
             <label>URL Google Maps</label>
             <input type="text" class="form-control @error('url_maps') is-invalid @enderror" name="url_maps" value="{{ old('url_maps') }}" placeholder="https://maps.app.goo.gl/xxxxx">
+            
+            <div class="d-flex justify-content-end mt-1" title="Bagaimana cara saya mendapatkan URL Google Maps">
+                <a href="#" data-toggle="modal" data-target="#urlMaps" style="text-decoration: none; width: 30px; height: 30px" class="d-flex justify-content-center bg-white rounded-circle border align-items-center">
+                    <i class="fas fa-question"></i>
+                </a>
+            </div>
+            
             @error('url_maps')
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
         </div>
       
-        <div class="form-group col-md-6 mb-4">
+        <div class="form-group col-md-6 mb-2">
             <label>Provinsi</label>
             <select name="provinsi" id="" class="form-control @error('provinsi') is-invalid @enderror">
                 <option value="" disabled selected>-- Pilih Provinsi --</option>
@@ -53,16 +60,17 @@
             @enderror
         </div>
 
-        <div class="form-group col-md-6 mb-4">
+        <div class="form-group col-md-6 mb-2">
           <label>Foto</label>
-          <input type="file" class="form-control @error('foto') is-invalid @enderror form-control-file" id="imageInput" onchange="previewImage()" name="foto" value="{{ old('foto') }}">
+          <input type="file" class="form-control @error('foto') is-invalid @enderror form-control-file" id="imageInput" onchange="previewImage()" name="foto" value="{{ old('foto') }}" accept=".jpg, .jpeg, .png, .gif">
           <img id="imagePreview" src="#" alt="Preview" class="mt-2" style="display:none; max-width: 300px;">
+          <small class="text-danger">Ukuran gambar maksimal 2MB</small>
           @error('foto')
               <div class="invalid-feedback">{{$message}}</div>
           @enderror
         </div>
 
-        <div class="form-group col-md-6 mb-4">
+        <div class="form-group col-md-6 mb-2">
             <label>Alamat</label>
             <textarea name="alamat" id="" cols="30" rows="5" class="form-control @error('alamat') is-invalid @enderror" name="alamat">{{ old('alamat') }}</textarea>
             @error('alamat')
@@ -70,9 +78,14 @@
             @enderror
         </div>
 
-        <div class="form-group col-md-6 mb-4">
+        <div class="form-group col-md-6 mb-2">
             <label>Iframe</label>
             <textarea name="iframe" id="" cols="30" rows="5" class="form-control @error('iframe') is-invalid @enderror" name="iframe">{{ old('iframe') }}</textarea>
+            <div class="d-flex justify-content-end mt-1" title="Bagaimana cara saya mendapatkan Iframe">
+                <a href="http://" style="text-decoration: none; width: 44px; height: 44px" class="d-flex justify-content-center bg-white rounded-circle border align-items-center">
+                    <i class="fas fa-question"></i>
+                </a>
+            </div>
             @error('iframe')
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
@@ -91,6 +104,26 @@
         </div>
     </div>
     </form>
+  </div>
+
+  <div class="modal fade" id="urlMaps" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
   </div>
 <!-- /.container-fluid -->
 @endsection

@@ -16,13 +16,14 @@
       referrerpolicy="no-referrer"
     />
   </head>
+  @livewireStyles
 
   @yield('css')
 
   <body>
     @yield('content')
     
-    
+    @livewireScripts
     @yield('script')
   </body>
 </html>

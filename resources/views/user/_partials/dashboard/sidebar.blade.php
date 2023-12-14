@@ -1,10 +1,10 @@
 <!-- Sidebar -->
-<ul class="navbar-nav sidebar bg-gradient-primary sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #0B2F8A !important">
 
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('user.dashboard') }}">
-      <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+      <div class="sidebar-brand-icon">
+          <img src="{{ asset('logo/white-logo.png') }}" alt="Logo" class="w-100 p-2">
       </div>
       <div class="sidebar-brand-text mx-3" style="text-align: left">Jelajah Nusantara</div>
   </a>
@@ -37,9 +37,9 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="/">
-      <i class="fas fa-long-arrow-alt-left"></i>
-        <span>Kembali</span></a>
+    <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+      <i class="fas fa-power-off"></i>
+        <span>Logout</span></a>
   </li>
 
   <!-- Divider -->

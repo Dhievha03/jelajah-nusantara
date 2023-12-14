@@ -21,6 +21,10 @@
                 </div>
                 <label class="btn btn-primary w-100 mt-4" onclick="document.getElementById('upload-photo').click()">Ubah Foto</label>
                 <input name="foto" type="file" id="upload-photo" class="d-none" accept="image/*"/>
+                <small class="text-danger">Ukuran gambar maksimal 2MB</small>
+                @error('foto')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
         </div>
     </div>
