@@ -2,7 +2,7 @@
 <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #0B2F8A !important">
 
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('user.dashboard') }}">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
       <div class="sidebar-brand-icon">
           <img src="{{ asset('logo/white-logo.png') }}" alt="Logo" class="w-100 p-2">
       </div>

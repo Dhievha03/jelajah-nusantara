@@ -19,8 +19,8 @@
                 <li class="nav-item {{ Route::is('page.wisata*') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('page.wisata') }}">Wisata</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                <li class="nav-item {{ Route::is('about') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('about') }}">About</a>
                 </li>
             </ul>
             <div>

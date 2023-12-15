@@ -11,14 +11,12 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $wisata = Wisata::select('id', 'prov_id', 'user_id', 'nama_wisata', 'deskripsi', 'foto', 'created_at')->with('provinsi')->where('status', '=', '1')->limit(3)->get();
+        $wisata = Wisata::select('id', 'prov_id', 'user_id', 'nama_wisata', 'deskripsi', 'foto', 'created_at')->with('provinsi')->where('status', '=', '1')->limit(4)->get();
         return view('page.home', compact('wisata'));
     }
 
-    public function show(Trending $cards, $id)
+    public function about()
     {
-        $cards = Wisata::findOrFail($id);
-
-        return view('page.detail', compact('cards'));
+        return view('page.about');
     }
 }
