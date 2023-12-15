@@ -9,7 +9,6 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Page\HomeController;
 use App\Http\Controllers\Page\ProvinsiController as PageProvinsiController;
-use App\Http\Controllers\Page\TrendingController;
 use App\Http\Controllers\Page\WisataPageController;
 use App\Http\Controllers\User\AuthController as UserAuthController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
@@ -47,6 +46,8 @@ Route::get('/provinsi/{id}/{slug}', [PageProvinsiController::class, 'detail'])->
 Route::get('/wisata', [WisataPageController::class, 'index'])->name('page.wisata');
 Route::get('/wisata/search', [WisataPageController::class, 'search'])->name('page.wisata.search');
 Route::get('/detail/{id}/{slug}', [WisataPageController::class, 'detail'])->name('page.wisata.detail');
+
+Route::get('/about', [HomeController::class, 'about'])->name('about');
 
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
 
