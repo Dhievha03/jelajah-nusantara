@@ -36,6 +36,11 @@
         <div class="form-group col-md-6 mb-4">
             <label>URL Google Maps</label>
             <input type="text" class="form-control @error('url_maps') is-invalid @enderror" name="url_maps" value="{{ old('url_maps', $wisata->url_maps) }}">
+            <div class="d-flex justify-content-end mt-1" title="Bagaimana cara saya mendapatkan URL Google Maps">
+                <a href="#" data-toggle="modal" data-target="#urlMaps" style="text-decoration: none; width: 20px; height: 20px" class="d-flex justify-content-center bg-white rounded-circle border align-items-center p-3">
+                    <i class="fas fa-question"></i>
+                </a>
+            </div>
             @error('url_maps')
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
@@ -78,6 +83,11 @@
         <div class="form-group col-md-6 mb-4">
             <label>Iframe</label>
             <textarea name="iframe" id="" cols="30" rows="5" class="form-control @error('iframe') is-invalid @enderror" name="iframe">{{ old('iframe', $wisata->iframe) }}</textarea>
+            <div class="d-flex justify-content-end mt-1" title="Bagaimana cara saya mendapatkan Iframe">
+                <a href="#" data-toggle="modal" data-target="#iframe" style="text-decoration: none; width: 20px; height: 20px" class="d-flex justify-content-center bg-white rounded-circle border align-items-center p-3">
+                    <i class="fas fa-question"></i>
+                </a>
+            </div>
             @error('iframe')
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
@@ -108,6 +118,73 @@
     </div>
     </form>
   </div>
+    {{-- modal --}}
+    <div class="modal fade" id="urlMaps" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title font-weight-bold" id="exampleModalLabel" style="color: rgb(106, 106, 106)">Panduan cara mendapatkan URL Google Maps</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <ol>
+                <li class="mb-4">Kunjungi Google Maps pada Browser Anda.
+                  <img class="w-100" src="{{ asset('tutorial/step_1.png') }}" alt="step_1">
+                </li>
+                <li class="mb-4">Cari lokasi atau alamat yang ingin Anda tampilkan di peta. Kilk lokasi atau alamat tersebut maka akan muncul menu “Ringkasan”.
+                  <img class="w-100" src="{{ asset('tutorial/step_2.png') }}" alt="step_2">
+                </li>
+                <li class="mb-4">Pilih opsi “Bagikan” atau “Share”.
+                  <img class="w-100" src="{{ asset('tutorial/step_3.png') }}" alt="step_3">
+                </li>
+                <li class="mb-4">Pilih “Salin Link” pada halaman “Kirim link” tuk menyalin URL peta yang diinginkan.
+                  <img class="w-100" src="{{ asset('tutorial/step_4.png') }}" alt="step_4">
+                </li>
+              </ol>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="modal fade" id="iframe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title font-weight-bold" id="exampleModalLabel" style="color: rgb(106, 106, 106)">Panduan cara mendapatkan Iframe</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <ol>
+                <li class="mb-4">Kunjungi Google Maps pada Browser Anda.
+                  <img class="w-100" src="{{ asset('tutorial/step_1.png') }}" alt="step_1">
+                </li>
+                <li class="mb-4">Cari lokasi atau alamat yang ingin Anda tampilkan di peta. Kilk lokasi atau alamat tersebut maka akan muncul menu “Ringkasan”.
+                  <img class="w-100" src="{{ asset('tutorial/step_2.png') }}" alt="step_2">
+                </li>
+                <li class="mb-4">Pilih opsi “Bagikan” atau “Share”.
+                  <img class="w-100" src="{{ asset('tutorial/step_3.png') }}" alt="step_3">
+                </li>
+                <li class="mb-4">Klik “Sematkan peta” kemudian pilih ukuran “Kecil” di sebelah link iframe.
+                  <img class="w-100" src="{{ asset('tutorial/step_4.1.png') }}" alt="step_4">
+                </li>
+                <li class="mb-4">Pilih “Salin HTML” untuk menyalin html iframe.
+                  <img class="w-100" src="{{ asset('tutorial/step_4.2.png') }}" alt="step_4">
+                </li>
+              </ol>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 <!-- /.container-fluid -->
 @endsection
 

@@ -15,10 +15,10 @@
 
                   <div class="credits text-center text-md-start mt-4 fs-7">
                       <p style="font-weight: 500">Hubungi Kami</p>
-                      <a class="text-decoration-none d-inline justify-content-center justify-content-start align-items-center" href="mailto:TeamJelajahNusantara@gmail.com">
+                      <a class="text-decoration-none d-inline justify-content-center justify-content-start align-items-center" href="mailto:teamjelajahnusantara@gmail.com">
                         <i class="text-muted bi bi-envelope-fill" style="font-size: 18px; margin-right: 8px;"></i>
                         <small class="text-muted">
-                          TeamJelajahNusantara@gmail.com
+                          teamjelajahnusantara@gmail.com
                         </small>
                       </a>
                   </div>  
