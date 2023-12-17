@@ -70,8 +70,8 @@ php artisan migrate
 php artisan db:seed
 ```
 credential admin secara default adalah :
-email : admin@jelajah.com
-password : 12345678
+- email : admin@jelajah.com
+- password : 12345678
 
 ### 9. Buat Symbolic Link
 ```
