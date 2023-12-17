@@ -1,23 +1,29 @@
 <p align="center"><a href="https://jelajah-nusantara.my.id/" target="_blank"><img src="https://jelajah-nusantara.my.id/logo/logo-no-background.png" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
 ## Tentang Jelajah Nusantara
 
 Teman setia petualangan Anda di berbagai destinasi menakjubkan di Indonesia! Kami lebih dari sekadar aplikasi, kami adalah sahabat perjalanan yang membimbing Anda menemukan keindahan alam, kekayaan budaya, dan pengalaman tak terlupakan di seluruh Nusantara. Kami hadir untuk memastikan setiap langkah perjalanan Anda diberkati dengan keunikan dan keindahan sejarah yang hanya dapat ditemukan di Indonesia. Temukan keajaiban-keajaiban sejarah yang memikat, dari candi kuno hingga peninggalan kolonial, dan rasakan pesona Indonesia yang kaya akan warisan budaya.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Fitur
+
+### User
+- Login dan Register
+- Ubah Profil
+- CRUD Wisata
+- Simpan Wisata
+- Logout
+
+### Admin
+- Login
+- Kelola Data User
+- Kelola Data Provinsi
+- Kelola Data Wisata
+- Approval Wisata
+
+## Requirement
+
+- PHP >= 7.3
+- Composer >= 2
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
