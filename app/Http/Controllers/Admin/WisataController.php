@@ -139,7 +139,6 @@ class WisataController extends Controller
 
             if ($imagePath) {
                 $wisata->update([
-                    'user_id' => 1,
                     'prov_id' => $request->input('provinsi'),
                     'nama_wisata' => $request->input('nama_wisata'),
                     'url_maps' => $request->input('url_maps'),
@@ -157,7 +156,6 @@ class WisataController extends Controller
         }
         
         $wisata->update([
-            'user_id' => 1,
             'prov_id' => $request->input('provinsi'),
             'nama_wisata' => $request->input('nama_wisata'),
             'url_maps' => $request->input('url_maps'),

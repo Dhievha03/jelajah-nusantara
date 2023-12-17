@@ -6,6 +6,7 @@
 
 <title>Jelajah Nusantara | Dashboard Admin</title>
 
+<link href="{{ asset('logo/favicon.png') }}" rel="icon">
 <!-- Custom fonts for this template-->
 <link href="{{ asset('template-admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
 <link

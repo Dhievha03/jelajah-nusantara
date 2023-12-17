@@ -16,6 +16,7 @@ use App\Http\Controllers\User\WisataController as UserWisataController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SavedWisataController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
