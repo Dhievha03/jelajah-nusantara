@@ -45,7 +45,7 @@ Route::get('/provinsi/{id}/{slug}', [PageProvinsiController::class, 'detail'])->
 
 Route::get('/wisata', [WisataPageController::class, 'index'])->name('page.wisata');
 Route::get('/wisata/search', [WisataPageController::class, 'search'])->name('page.wisata.search');
-Route::get('/detail/{id}/{slug}', [WisataPageController::class, 'detail'])->name('page.wisata.detail');
+Route::get('/wisata/{id}/{slug}', [WisataPageController::class, 'detail'])->name('page.wisata.detail');
 
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 
