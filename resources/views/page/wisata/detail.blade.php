@@ -1,5 +1,6 @@
 @extends('page._layouts.main')
-@section('title', 'Wisata')
+@section('title', $cards->nama_wisata)
+@section('description', substr(strip_tags($cards->deskripsi), 0, 100) . '...')
 
 @section('content')
     <div class="container">
