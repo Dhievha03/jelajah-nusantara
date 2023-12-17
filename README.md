@@ -7,9 +7,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Tentang Jelajah Nusantara
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Teman setia petualangan Anda di berbagai destinasi menakjubkan di Indonesia! Kami lebih dari sekadar aplikasi, kami adalah sahabat perjalanan yang membimbing Anda menemukan keindahan alam, kekayaan budaya, dan pengalaman tak terlupakan di seluruh Nusantara. Kami hadir untuk memastikan setiap langkah perjalanan Anda diberkati dengan keunikan dan keindahan sejarah yang hanya dapat ditemukan di Indonesia. Temukan keajaiban-keajaiban sejarah yang memikat, dari candi kuno hingga peninggalan kolonial, dan rasakan pesona Indonesia yang kaya akan warisan budaya.
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
