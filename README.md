@@ -25,7 +25,12 @@ Teman setia petualangan Anda di berbagai destinasi menakjubkan di Indonesia! Kam
 - PHP >= 7.3
 - Composer >= 2
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Panduan Menginstall Aplikasi
+
+## 1. Clone Repository
+```
+git clone https://github.com/Dhievha03/jelajah-nusantara.git
+```
 
 ## Learning Laravel
 
