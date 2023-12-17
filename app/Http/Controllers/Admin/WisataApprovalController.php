@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Wisata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 
 class WisataApprovalController extends Controller
 {
@@ -59,6 +60,14 @@ class WisataApprovalController extends Controller
             'status' => 1
         ]);
 
+        $url = route('page.wisata.detail', [$wisata->id, Str::lower(Str::slug($wisata->nama_wisata))]);
+        $dates = $wisata->updated_at;
+
+        Mail::send('email.wisata-approve-email', ['wisata' => $wisata, 'url' => $url, 'dates' => $dates], function($message) use($wisata){
+            $message->to($wisata->user->email);
+            $message->subject('Jelajah Nusantara : Postingan Anda Telah di Setujui');
+        });
+
         return redirect()->route('admin.wisata-approval.index')->with('success', 'Postingan berhasil diterima.');
     }
 
@@ -67,6 +76,14 @@ class WisataApprovalController extends Controller
         $wisata->update([
             'status' => 2
         ]);
+
+        $url = route('page.wisata.detail', [$wisata->id, Str::lower(Str::slug($wisata->nama_wisata))]);
+        $dates = $wisata->updated_at;
+
+        Mail::send('email.wisata-reject-email', ['wisata' => $wisata, 'url' => $url, 'dates' => $dates], function($message) use($wisata){
+            $message->to($wisata->user->email);
+            $message->subject('Jelajah Nusantara : Postingan Anda Telah di Tolak');
+        });
 
         return redirect()->route('admin.wisata-approval.index')->with('success', 'Postingan berhasil ditolak.');
     }
