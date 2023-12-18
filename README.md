@@ -19,6 +19,7 @@ Teman setia petualangan Anda di berbagai destinasi menakjubkan di Indonesia! Kam
 - Kelola Data Provinsi
 - Kelola Data Wisata
 - Approval Wisata
+- Logout
 
 ## Requirement
 
