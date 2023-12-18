@@ -12,7 +12,7 @@
                             <div>
                                 <h5 class="font-weight-bold">{{ $cards->nama_wisata }}</h5>
                                 <p style="font-size: 14px">{{ $cards->user->name }} |
-                                    {{ $cards->created_at->diffForHumans() }} </p>
+                                    {{ \Carbon\Carbon::parse($cards->created_at)->isoFormat('D MMMM Y') }} </p>
                             </div>
                             @auth
                                 @livewire('saved-button', ['wisataId' => $cards->id])
