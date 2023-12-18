@@ -5,6 +5,8 @@
 
 <link href="{{ asset('logo/favicon.png') }}" rel="icon">
 
+<meta name="dicoding:email" content="aditpraz222@gmail.com">
+
 <meta name="title" content="Jelajah Nusantara - @yield('title')">
 <meta name="description" content="Jelajah Nusantara - @yield('description')" />
 <meta name="keywords" content="Jelajah Nusantara, Wisata Bersejarah, Peninggalan Sejarah, Situs Bersejarah, Destinasi Bersejarah, Candi Bersejarah, Istana Bersejarah, Benteng Bersejarah, Museum Sejarah, Monumen Bersejarah, Warisan Budaya, Tradisi Sejarah, Acara Budaya, Festival Sejarah, Tur Guided Sejarah, Aktivitas Sejarah, Acara Pendidikan Sejarah, Rekreasi Sejarah, Restoran Bersejarah, Website Pencarian Sejarah, Aplikasi Pemandu Wisata Sejarah, Peta Wisata Bersejarah, Kurasi Informasi Sejarah, Database Wisata Bersejarah, Pelestarian Situs Bersejarah, Pariwisata Berkelanjutan, Program Konservasi Sejarah, Ulasan Wisata Sejarah, Rating Destinasi Bersejarah, Pengalaman Pengunjung Sejarah, Peta Destinasi Sejarah, Navigasi ke Situs Bersejarah, Rute Wisata Sejarah" />
